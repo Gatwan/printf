@@ -23,14 +23,14 @@ int _printf(const char *format, ...)
 	{
 	return (-1);
 	}
-	while (format != NULL && format[b] != 0)
+	while (format[b] != '\0')
 	{
 		c = 0;
 		if (format[b] == '%')
 		{
 			for (d = 0; d < 8; d++)
 			{
-				if (format[b + 1] == 0)
+				if (format[b + 1] == '\0')
 					{
 					return (-1);
 					}
