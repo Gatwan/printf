@@ -2,7 +2,20 @@
 #define MAIN_H
 #include <stdarg.h>
 
+/**
+*struct formspec - structure for specifier and corresponding functions
+*@fs: data type format
+*@func: function parameter
+*/
+typedef struct formspec
+{
+	char *fs;
+	int (*func)(va_list arg);
+} specifier;
+
 int _putchar(char c);
 int _printf(const char *format, ...);
+
+
 
 #endif

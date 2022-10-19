@@ -11,5 +11,15 @@
 */
 int _printf(const char *format, ...)
 {
-	va_list valist	
+	va_list valist;
+	specifier my_list[] = {
+		{"c", printchar}, {"s", printstr}
+	};
+
+	va_start(valist, format);
+
+
+
+	va_end(valist);
+
 }
