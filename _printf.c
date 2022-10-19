@@ -49,7 +49,6 @@ int _printf(const char *format, ...)
 		b = b + 1;
 	}
 	len = b + cuenf - e;
->>>>>>> bd9fa5aee56f38de20dedf595eae5dbb68d41917
 	va_end(valist);
 	return (len);
 }

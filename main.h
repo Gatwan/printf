@@ -14,6 +14,7 @@ typedef struct formspec
 } specifier;
 
 int _putchar(char c);
+int _puts(char *str);
 int _printf(const char *format, ...);
 
 
