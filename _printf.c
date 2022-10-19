@@ -18,7 +18,7 @@ int _printf(const char *format, ...)
 
 	va_start(valist, format);
 
-
+	
 
 	va_end(valist);
 
