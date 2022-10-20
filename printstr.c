@@ -1,15 +1,15 @@
 #include "main.h"
 /**
-*printstr - function that prints a string
-*@valist: loop through the list of arguments
-*Return: length of string as int
-*/
-int printstr(va_list valist)
+ * print_string - prints a string
+ * @ap: argument parameters
+ *Return: string length success else 6
+ */
+int print_string(va_list ap)
 {
 	char *str;
 	int len;
 
-	str = va_arg(valist, char *);
+	str = va_arg(ap, char *);
 	if (str)
 	{
 		for (len = 0; *(str + len) != '\0'; len++)

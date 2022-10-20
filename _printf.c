@@ -10,11 +10,11 @@
 int _printf(const char *format, ...)
 {
 	unsigned int i = 0, size = 0;
-	va_list valist;
+	va_list ap;
 
 	if (!format)
 		return (-1);
-	va_start(valist, format);
+	va_start(ap, format);
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -28,9 +28,9 @@ int _printf(const char *format, ...)
 				size++;
 				i++;
 			}
-			else if (id_func(format[i + 1]) != NULL)
+			else if (get_func(format[i + 1]) != NULL)
 			{
-				size += (id_func(format[i + 1]))(valist);
+				size += (get_func(format[i + 1]))(ap);
 				i++;
 			}
 			else
@@ -46,5 +46,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	return (size);
-	va_end(valist);
+	va_end(ap);
 }

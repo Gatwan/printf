@@ -1,13 +1,12 @@
 #include "main.h"
-
 /**
-*printchar - function that prints a character
-*@valist: loop through the list of arguments
-*Return: char length as int
-*/
-int printchar(va_list valist)
+ * print_char - prints a char
+ * @ap: argument parameters
+ * Return: 1 on success
+ */
+int print_char(va_list ap)
 {
-	char output = va_arg(valist, int);
+	char output = va_arg(ap, int);
 
 	write(1, &output, 1);
 	return (1);
