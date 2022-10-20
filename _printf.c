@@ -15,7 +15,8 @@ int _printf(const char *format, ...)
 	int b = 0, c = 0, d = 0, e = 0, cuenf = 0, len = 0;
 
 	specifier my_list[] = {
-		{"c", printchar}, {"s", printstr}
+		{"c", printchar}, {"s", printstr}, {"i", printdoIt},
+		{"d", printdoIt}
 	};
 
 	va_start(valist, format);
