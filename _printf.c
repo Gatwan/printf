@@ -11,40 +11,51 @@
 */
 int _printf(const char *format, ...)
 {
+	int b = 0, c, d = 0, e = 0, f = 0, lenfunc = 0, len = 0;
 	va_list valist;
-	int b = 0, c = 0, d = 0, e = 0, lenfunc = 0, len = 0;
-
 	specifier my_list[] = {
 		{"c", printchar}, {"s", printstr}, {"i", printdoIt},
 		{"d", printdoIt}
 		};
-	va_start(valist, format);
-	if (format == NULL)
+	if (!format)
 		return (-1);
-	while (format != NULL && format[b] != 0)
+	va_start(valist, format);
+
+	for (b = 0; format[b] !=  '\0'; b++)
 	{
-		c = 0;
 		if (format[b] == '%')
 		{
-			for (d = 0; d < 4; d++)
+			if (format[b + 1] == '\0')
+				return (-1);
+			else if (format[b + 1] == '%')
 			{
-				if (format[b + 1] == 0)
-					return (-1);
-				if (format[b + 1] == *(my_list[d].fs))
+				_putchar('%');
+				e++;
+				b++;
+			}
+			else if (format[b + 1] != '\0')
+			{
+
+				for (c = 0; my_list[c].fs != '\0'; c++)
 				{
-					lenfunc = lenfunc + my_list[d].func(valist);
-					c = 2;
-					e = e + 2;
-					b = b + 1;
-					break;
+					if (my_list[c].fs == char (format[b + 1]))
+					{
+						lenfunc = lenfunc + (int (my_list[c].func));
+					}
 				}
 			}
+			else
+			{
+				_putchar(format[b]);
+				f++;
+			}
 		}
-		if (c == 0)
+		else
+		{
 			_putchar(format[b]);
-		b = b + 1;
+			d++;
+		}
 	}
-	len = b + lenfunc - e;
-	va_end(valist);
+	len = lenfunc + d + e + f;
 	return (len);
 }
