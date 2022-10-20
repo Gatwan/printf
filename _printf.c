@@ -20,31 +20,29 @@ int _printf(const char *format, ...)
 		};
 	va_start(valist, format);
 	if (format == NULL)
-	{
-	return (-1);
-	}
-	while (format != NULL && format[b] != '\0')
+		return (-1);
+	while (format != NULL && format[b] != 0)
 	{
 		c = 0;
 		if (format[b] == '%')
 		{
 			for (d = 0; d < 4; d++)
 			{
-				if (format[b + 1] == '\0')
+				if (format[b + 1] == 0)
 					return (-1);
 				if (format[b + 1] == *(my_list[d].fs))
 				{
-					lenfunc += my_list[d].func(valist);
+					lenfunc = lenfunc + my_list[d].func(valist);
 					c = 2;
-					e += 2;
-					b++;
+					e = e + 2;
+					b = b + 1;
 					break;
 				}
 			}
 		}
 		if (c == 0)
 			_putchar(format[b]);
-			b++;
+		b = b + 1;
 	}
 	len = b + lenfunc - e;
 	va_end(valist);
