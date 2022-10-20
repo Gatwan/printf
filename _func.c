@@ -11,7 +11,8 @@ int (*get_func(const char format))(va_list)
 	selector(array[]) = {
 		{'c', print_char},
 		{'s', print_string},
-		{'u', print_unsigned_int},
+		{'d', print_int},
+		{'i', print_int},
 		{'\0', NULL}
 	};
 
