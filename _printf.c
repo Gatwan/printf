@@ -19,11 +19,11 @@ int _printf(const char *format, ...)
 		{"d", printdoIt}	};
 
 	va_start(valist, format);
-	if (format[b] == '\0')
+	if (format == NULL)
 	{
 	return (-1);
 	}
-	while (format[b] != '\0')
+	while (format != NULL && format[b] != '\0')
 	{
 		c = 0;
 		if (format[b] == '%')
