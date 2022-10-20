@@ -7,11 +7,10 @@
 */
 int printchar(va_list valist)
 {
-	int printc = 0;
+	char output = va_arg(valist, int);
 
-	printc = va_arg(valist, int);
-	_putchar(printc);
-	return  (1);
+	write(1, &output, 1);
+	return (1);
 }
 
 /**
@@ -21,12 +20,18 @@ int printchar(va_list valist)
 */
 int printstr(va_list valist)
 {
-	char *c = va_arg(valist, char *);
+	char *str;
+	int len;
 
-	if (c == NULL)
+	str = va_arg(valist, char *);
+	if (str)
 	{
-		_puts("(null)");
+		for (len = 0; *(str + len) != '\0'; len++)
+			;
+		write(1, str, len);
+		return (len);
 	}
+	write(1, "(null)", 6);
 	return (6);
 }
 
