@@ -11,51 +11,42 @@
 */
 int _printf(const char *format, ...)
 {
-	int b = 0, c, d = 0, e = 0, f = 0, lenfunc = 0, len = 0;
+	unsigned int i = 0, size = 0;
 	va_list valist;
-	specifier my_list[] = {
-		{"c", printchar}, {"s", printstr}, {"i", printdoIt},
-		{"d", printdoIt}
-		};
+
 	if (!format)
 		return (-1);
 	va_start(valist, format);
 
-	for (b = 0; format[b] !=  '\0'; b++)
+	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[b] == '%')
+		if (format[i] == '%')
 		{
-			if (format[b + 1] == '\0')
+			if (format[i + 1] == '\0')
 				return (-1);
-			else if (format[b + 1] == '%')
+			else if (format[i + 1] == '%')
 			{
 				_putchar('%');
-				e++;
-				b++;
+				size++;
+				i++;
 			}
-			else if (format[b + 1] != '\0')
+			else if (id_func(format[i + 1]) != NULL)
 			{
-
-				for (c = 0; my_list[c].fs != '\0'; c++)
-				{
-					if (my_list[c].fs == char (format[b + 1]))
-					{
-						lenfunc = lenfunc + (int (my_list[c].func));
-					}
-				}
+				size += (id_func(format[i + 1]))(valist);
+				i++;
 			}
 			else
 			{
-				_putchar(format[b]);
-				f++;
+				_putchar(format[i]);
+				size++;
 			}
 		}
 		else
 		{
-			_putchar(format[b]);
-			d++;
+			_putchar(format[i]);
+			size++;
 		}
 	}
-	len = lenfunc + d + e + f;
-	return (len);
+	return (size);
+	va_end(valist);
 }
