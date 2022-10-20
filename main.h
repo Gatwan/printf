@@ -10,7 +10,7 @@
 typedef struct formspec
 {
 	char *fs;
-	int (*func)(va_list arg);
+	int (*func)(va_list);
 } specifier;
 
 int _putchar(char c);
