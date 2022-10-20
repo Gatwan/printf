@@ -13,6 +13,7 @@ int (*get_func(const char format))(va_list)
 		{'s', print_string},
 		{'d', print_int},
 		{'i', print_int},
+		{'b', decimaltobinary},
 		{'u', print_unsigned_int},
 		{'\0', NULL}
 	};
