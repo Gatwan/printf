@@ -17,7 +17,7 @@ typedef struct formspec
 
 int _putchar(char c);
 int _puts(char *str);
-int id_func(const char *format, va_list valist);
+int (*id_func(const char format))(va_list);
 int _printf(const char *format, ...);
 int printchar(va_list valist);
 int printstr(va_list valist);

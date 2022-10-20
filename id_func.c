@@ -6,7 +6,7 @@
 *
 *Return: number of charaters printed else 0
 */
-int (*id_func( format))(va_list)
+int (*id_func(const char format))(va_list)
 {
 	 specifier(my_list[]) = {
                 {"c", printchar}, {"s", printstr}, {"i", printdoIt},
@@ -18,7 +18,7 @@ int (*id_func( format))(va_list)
 
 	for (c = 0; my_list[c].fs != '\0'; c++)
 	{
-		if (my_list[c].fs == format)
+		if (*my_list[c].fs == format)
 		{
 			return (my_list[c].func);
 		}
